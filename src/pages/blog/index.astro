@@ -7,7 +7,6 @@ import { getCollection } from 'astro:content';
 import FormattedDate from '../../components/FormattedDate.astro';
 
 function filterArchived(post) {
-	console.log(post);
 	return !post.id.includes('arch');
 }
 
