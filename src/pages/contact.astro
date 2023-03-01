@@ -1,0 +1,16 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+import PageMeta from "../components/PageMeta.astro";
+import Contact from "../components/Contact.astro";
+import MyInfo from "../components/MyInfo.astro";
+
+import { SITE_TITLE, MY_NAME } from "../config";
+---
+
+<PageLayout>
+  <PageMeta title={`Contact | ${SITE_TITLE}`} slot="meta" />
+  <Fragment slot="main">
+    <MyInfo />
+    <Contact />
+  </Fragment>
+</PageLayout>
