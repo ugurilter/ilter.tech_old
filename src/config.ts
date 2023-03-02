@@ -5,7 +5,7 @@ export const SITE_TITLE       = "Ugur Ilter - Personal Website";
 export const SITE_DESCRIPTION = "Welcome to my personal website !";
 export const MY_NAME          = "Ugur Ilter";
 export const MY_TITLE         = "Sr. Embedded Software Engineer";
-
+export const TWITTER_HANDLE   = ""
 /**
  * Social handles & urls
  */

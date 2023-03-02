@@ -11,10 +11,53 @@ import {
   SOC_GITHUB_HDL,
   SOC_GITHUB_URL,
 } from "../config";
+
+import ContactForm from "./ContactForm.astro"
 ---
 
+<div>
+  <div class="flex justify-center mb-8">
+      <a
+        class="unset text-xl ml-4 hover:text-text-link"
+        href={SOC_LINKEDIN_URL}
+      >
+        <i
+          class="fa-xl fa-beat fa-brands fa-linkedin"
+          style="--fa-animation-iteration-count: 1;"
+          aria-hidden="true"
+          title="Ugur on LinkedIn"></i>
+        <span class="fa-sr-only">Ugur on LinkedIn</span>
+      </a>
+      <a class="unset text-xl ml-4 hover:text-text-link" href={SOC_GITHUB_URL}>
+        <i
+          class="fa-xl fa-beat fa-brands fa-github"
+          style="--fa-animation-iteration-count: 1;"
+          aria-hidden="true"
+          title="Ugur on GitHub"></i>
+        <span class="fa-sr-only">Ugur on GitHub</span>
+      </a>
+      <a class="unset text-xl ml-4 hover:text-text-link" href={SOC_STEAM_URL}>
+        <i
+          class="fa-xl fa-beat fa-brands fa-steam"
+          style="--fa-animation-iteration-count: 1;"
+          aria-hidden="true"
+          title="Ugur on Steam"></i>
+        <span class="fa-sr-only">Ugur on Steam</span>
+      </a>
+      <a class="unset text-xl ml-4 hover:text-text-link" href={SOC_SO_URL}>
+        <i
+          class="fa-xl fa-beat fa-brands fa-stack-overflow"
+          style="--fa-animation-iteration-count: 1;"
+          aria-hidden="true"
+          title="Ugur on StackOverflow"></i>
+        <span class="fa-sr-only">Ugur on StackOverflow</span>
+      </a>
+    </div>
+  <ContactForm />
+</div>
+
 <!-- Section: Design Block -->
-<div class="container text-gray-800 px-4 md:px-12">
+<!-- <div class="container text-gray-800 px-4 md:px-12">
   <div
     class="block rounded-lg shadow-lg py-10 md:py-12 px-4 md:px-6"
     style="background: hsla(0, 0%, 100%, 0.8); backdrop-filter: blur(30px);"
@@ -101,5 +144,5 @@ import {
       </form>
     </div>
   </div>
-</div>
+</div> -->
 <!-- Section: Design Block -->
