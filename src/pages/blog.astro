@@ -1,8 +1,10 @@
 ---
 import { readAll } from "../lib/markdoc/read";
 import { blog } from "../lib/markdoc/frontmatter.schema";
+import { Picture } from "@astrojs/image/components";
 import PageLayout from "../layouts/PageLayout.astro";
 import PageMeta from "../components/PageMeta.astro";
+import MyInfo from "../components/MyInfo.astro";
 import { SITE_TITLE } from "../config";
 
 const posts = await readAll({
@@ -22,47 +24,50 @@ const sortedPosts = posts
 <PageLayout>
   <PageMeta title={`Blog | ${SITE_TITLE}`} slot="meta" />
   <section slot="main">
+    <MyInfo />
     <ul>
       {
-        sortedPosts.map((post) => {
-          const formattedDate = new Date(
-            post.frontmatter.date
-          ).toLocaleDateString("en-us", {
-            year: "numeric",
-            month: "short",
-            day: "numeric",
-          });
-          return (
-            <li class="grid grid-cols-[1fr] md:grid-cols-[1fr_auto] mb-3 md:gap-2 items-start">
-              <div class="title">
-                {post.frontmatter.external ? (
-                  <a
-                    href={post.frontmatter.url}
-                    target="_blank"
-                    class="unset hover:text-text-link"
-                  >
-                    <span>{post.frontmatter.title}</span>
-                    <span>
-                      <i class="ml-1 mr-1 text-[12px] pb-2 fa-solid fa-up-right-from-square pt-1" />
+        sortedPosts.map((blogPostEntry, index) => (
+          <li>
+            <a href={`/blog/${blogPostEntry.slug}`}>
+              <div class="grid md:grid-cols-2 gap-5 md:gap-10 items-center">
+                <Picture
+                  src={blogPostEntry.frontmatter.image.src}
+                  alt={blogPostEntry.frontmatter.image.alt}
+                  sizes="(max-width: 800px) 100vw, 800px"
+                  widths={[200, 400, 800]}
+                  aspectRatio="16:9"
+                  background="#ffffff"
+                  fit="cover"
+                  position="center"
+                  loading={index <= 2 ? "eager" : "lazy"}
+                  decoding={index <= 2 ? "sync" : "async"}
+                  class="w-full rounded-md"
+                />
+                <div>
+                  <span class="text-blue-400 uppercase tracking-wider text-sm font-medium">
+                    {blogPostEntry.frontmatter.category}
+                  </span>
+                  <h2 class="text-3xl font-semibold leading-snug tracking-tight mt-1 ">
+                    {blogPostEntry.frontmatter.title}
+                  </h2>
+                  <div class="flex gap-2 mt-3">
+                    <span class="text-gray-400">
+                      {blogPostEntry.frontmatter.author}
                     </span>
-                  </a>
-                ) : (
-                  <a
-                    href={`/blog/${post.slug}`}
-                    class="unset hover:text-text-link"
-                  >
-                    {post.frontmatter.title}
-                  </a>
-                )}
+                    <span class="text-gray-400">• </span>
+                    <time
+                      class="text-gray-400"
+                      datetime={blogPostEntry.frontmatter.publishDate.toDateString()}
+                    >
+                      {blogPostEntry.frontmatter.publishDate.toDateString()}
+                    </time>
+                  </div>
+                </div>
               </div>
-              <div class="text-text-muted text-sm italic">
-                <time datetime={post.frontmatter.date.toISOString()}>
-                  {formattedDate}
-                </time>
-              </div>
-            </li>
-          );
-        })
+            </a>
+          </li>
+        ))
       }
     </ul>
   </section>
