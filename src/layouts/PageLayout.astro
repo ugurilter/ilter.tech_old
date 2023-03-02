@@ -9,6 +9,7 @@
 // Import the global.css file here so that it is included on
 import "../styles/global.css";
 
+import GoogleAnalytics from "./GoogleAnalytics.astro";
 import GoogleFont from "./GoogleFont.astro";
 import FontAwesome from "./FontAwesome.astro";
 import ThemeScript from "./ThemeScript.astro";
@@ -20,6 +21,7 @@ import Footer from "../components/Footer.astro";
 <!DOCTYPE html>
 <html class="theme-sleek" lang="en">
   <head>
+    <GoogleAnalytics />
     <!-- Global Metadata -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -31,9 +33,7 @@ import Footer from "../components/Footer.astro";
     <FontAwesome />
   </head>
 
-  <body
-    class="min-h-screen max-w-3xl mx-auto px-6 sm:px-8"
-  >
+  <body class="min-h-screen max-w-3xl mx-auto px-6 sm:px-8">
     <Header />
     <main id="main">
       <slot name="main" />

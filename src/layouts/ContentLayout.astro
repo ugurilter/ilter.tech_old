@@ -7,6 +7,7 @@
 // Import the global.css file here so that it is included on
 import "../styles/global.css";
 
+import GoogleAnalytics from "./GoogleAnalytics.astro";
 import GoogleFont from "./GoogleFont.astro";
 import FontAwesome from "./FontAwesome.astro";
 import ThemeScript from "./ThemeScript.astro";
@@ -30,6 +31,7 @@ const formattedDate = new Date(date).toLocaleDateString("en-us", {
 <!DOCTYPE html>
 <html class="theme-sleek" lang="en">
   <head>
+    <GoogleAnalytics />
     <!-- Global Metadata -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -41,9 +43,7 @@ const formattedDate = new Date(date).toLocaleDateString("en-us", {
     <FontAwesome />
   </head>
 
-  <body
-    class="min-h-screen max-w-3xl mx-auto px-6 sm:px-8"
-  >
+  <body class="min-h-screen max-w-3xl mx-auto px-6 sm:px-8">
     <Header />
     <main id="main">
       <section class="blog-post prose max-w-none prose-sleek">
