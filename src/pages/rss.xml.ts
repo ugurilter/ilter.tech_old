@@ -13,8 +13,8 @@ export const get = async () => {
     .filter((p) => p.frontmatter.draft !== true)
     .sort(
       (a, b) =>
-        new Date(b.frontmatter.date).valueOf() -
-        new Date(a.frontmatter.date).valueOf()
+        new Date(b.frontmatter.publishDate).valueOf() -
+        new Date(a.frontmatter.publishDate).valueOf()
     );
 
   let baseUrl = SITE_URL;
@@ -25,7 +25,7 @@ export const get = async () => {
   const rssItems = sortedPosts.map(({ frontmatter, slug }) => {
     if (frontmatter.external) {
       const title = frontmatter.title;
-      const pubDate = frontmatter.date;
+      const pubDate = frontmatter.publishDate;
       const link = frontmatter.url;
 
       return {
@@ -36,7 +36,7 @@ export const get = async () => {
     }
 
     const title = frontmatter.title;
-    const pubDate = frontmatter.date;
+    const pubDate = frontmatter.publishDate;
     const description = frontmatter.description;
     const link = `${baseUrl}/blog/${slug}`;
 

@@ -27,13 +27,6 @@ const sortedProjects = projects
     <ul>
       {
         sortedProjects.map((project) => {
-          const formattedDate = new Date(
-            project.frontmatter.date
-          ).toLocaleDateString("en-us", {
-            year: "numeric",
-            month: "short",
-            day: "numeric",
-          });
           return (
             <li class="grid grid-cols-[1fr] md:grid-cols-[1fr_auto] mb-3 md:gap-2 items-start">
               <div class="title">
@@ -49,8 +42,8 @@ const sortedProjects = projects
                 </a>
               </div>
               <div class="text-text-muted text-sm italic pt-1">
-                <time datetime={project.frontmatter.date.toISOString()}>
-                  {formattedDate}
+                <time datetime={project.frontmatter.publishDate.toDateString()}>
+                  {project.frontmatter.publishDate.toDateString()}
                 </time>
               </div>
             </li>

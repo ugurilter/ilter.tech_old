@@ -12,13 +12,6 @@ const baseSchema = z.object({
     invalid_type_error:
       "date must be written in yyyy-mm-dd format without quotes: For example, Jan 22, 2000 should be written as 2000-01-22.",
   }),
-  image: z.object({
-    src: z.string({
-      required_error: "Required frontmatter missing: src",
-      invalid_type_error: "src must be a string",
-    }),
-    alt: z.optional(z.string())
-  }),
 });
 
 /*
@@ -37,6 +30,15 @@ export const blog = z.discriminatedUnion("external", [
     snippet: z.optional(z.string()),
     category: z.optional(z.string()),
     author: z.optional(z.string()),
+    image: z.optional(
+      z.object({
+        src: z.string({
+          required_error: "Required frontmatter missing: src",
+          invalid_type_error: "src must be a string",
+        }),
+        alt: z.optional(z.string()),
+      })
+    ),
   }),
   // external link
   baseSchema.extend({
