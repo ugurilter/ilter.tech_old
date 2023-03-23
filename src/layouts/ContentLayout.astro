@@ -52,7 +52,9 @@ const formattedDate = new Date(date).toLocaleDateString("en-us", {
         <time class="block mb-[2em] text-text-muted">{formattedDate}</time>
         <slot name="content" />
         <br /><br />
-        <Disqus />
+        <div class="container mx-auto px-15">
+          <Disqus />
+        </div>
       </section>
     </main>
     <Footer />
